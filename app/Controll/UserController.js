@@ -28,3 +28,36 @@ export async function deleteUser(req,res) {
 
     res.status(200).json({mensagem: 'Usuário excluído com sucesso'})
 }
+
+//TERMINAR FUNÇÕES ABAIXO
+export async function updateUserName(req,res) {
+    const { id } = req.params;
+
+    if(!usuario){
+        return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+}
+
+export async function updateUserAge(req,res) {
+    const { id } = req.params;
+
+    if(!usuario){
+        return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+}
+
+export async function updateUserEmail(req,res) {
+    const { id } = req.params;
+
+    if(!usuario){
+        return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+}
+
+export async function updateUserKey(req,res) {
+    const { id } = req.params;
+
+    if(!usuario){
+        return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+}
