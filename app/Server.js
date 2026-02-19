@@ -2,15 +2,22 @@
 import pool from './Config/database.js';
 import dotenv from 'dotenv';
 dotenv.config();
-
 import express from 'express';
-// cria a aplicação
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
-// define a porta
 const PORT = process.env.PORT;;
+
+// servir arquivos estáticos da pasta public (pasta está em ...\SistemaAgendamento\public)
+app.use(express.static(path.join(__dirname, '..', 'APP','View')));
+
 // rota básica
 app.get('/',(req,res) => {
-    res.send('✅ Servidor Express rodando')
+    //res.send('✅ Servidor Express rodando')
+    res.sendFile(path.join(__dirname,'..','View','index.html'));
 });
 //Start
 async function StartServer() {
@@ -33,4 +40,4 @@ StartServer();
 //Nodemon funcionando
 //Server rodando com banco de dados funcionando
 //
-//Criar UserController.js para fazer validações. criar função para editar usuario.
+//Editar e testar rotas de usuário.

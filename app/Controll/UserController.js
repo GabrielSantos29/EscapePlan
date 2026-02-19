@@ -29,29 +29,41 @@ export async function deleteUser(req,res) {
     res.status(200).json({mensagem: 'Usuário excluído com sucesso'})
 }
 
-//TERMINAR FUNÇÕES ABAIXO
+//TERMINAR FUNÇÕES ABAIXO... Analisar funções.
 export async function updateUserName(req,res) {
     const { id } = req.params;
+
+    const usuario = await UserRepository.findById(id)
 
     if(!usuario){
         return res.status(404).json({ erro: 'Usuário não encontrado' });
     }
+
+    UserRepository.updateNameById(nome,id);
 }
 
 export async function updateUserAge(req,res) {
     const { id } = req.params;
 
+    const usuario = await UserRepository.findById(id)
+
     if(!usuario){
         return res.status(404).json({ erro: 'Usuário não encontrado' });
     }
+
+    UserRepository.updateAgeById(idade,id);
 }
 
 export async function updateUserEmail(req,res) {
     const { id } = req.params;
 
+    const usuario = await UserRepository.findById(id)
+
     if(!usuario){
         return res.status(404).json({ erro: 'Usuário não encontrado' });
     }
+
+    UserRepository.updateEmailById(email,id);
 }
 
 export async function updateUserKey(req,res) {
@@ -60,4 +72,6 @@ export async function updateUserKey(req,res) {
     if(!usuario){
         return res.status(404).json({ erro: 'Usuário não encontrado' });
     }
+
+    UserRepository.updateKeyById(senha,id);
 }
